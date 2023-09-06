@@ -88,7 +88,7 @@ span a {
 .home_page {
   height: 100vh;
   width: 100vw;
-  background: #000;
+  background-color: rgb(100, 164, 179);
   color: white;
   display: flex;
   justify-content: center;

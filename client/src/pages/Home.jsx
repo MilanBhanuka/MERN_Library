@@ -35,13 +35,6 @@ const Home = () => {
   return (
     <>
       <div className="home_page">
-        <h4>
-          {" "}
-          Welcome <span>{username}</span>
-        </h4>
-        <div>
-            
-        </div>
         <button onClick={Logout}>LOGOUT</button>
       </div>
       <ToastContainer />
