@@ -56,21 +56,17 @@ module.exports.updateBook = async (req, res) => {
     const { BookID } = req.params;
     const { BookName, BookAuthor, BookType, createdAt } = req.body;
 
-    // Find the book by BookID
     const book = await Book.findOne({ BookID });
 
-    // Check if the book exists
     if (!book) {
       return res.status(400).json({ message: "Book not found" });
     }
 
-    // Update the book's properties
     book.BookName = BookName;
     book.BookAuthor = BookAuthor;
     book.BookType = BookType;
     book.createdAt = createdAt;
 
-    // Save the updated book
     await book.save();
 
     res.status(200).json({ message: "Book updated successfully", success: true, updatedBook: book });
