@@ -6,6 +6,8 @@ require("dotenv").config();
 const cookieParser = require("cookie-parser");
 const authRoute = require("./Routes/AuthRoute");
 const BookRoutes = require("./Routes/BookRoutes");
+const AuthorRoute = require("./Routes/AuthorRoute");
+
 PORT=4000
 
 mongoose
@@ -34,3 +36,4 @@ app.use(express.json());
 
 app.use("/", authRoute);
 app.use("/Books", BookRoutes);
+app.use("/Authors", AuthorRoute);
