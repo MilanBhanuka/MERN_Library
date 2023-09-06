@@ -11,7 +11,7 @@ const AuthorRoute = require("./Routes/AuthorRoute");
 PORT=4000
 
 mongoose
-  .connect('mongodb+srv://milan:1234@library.gnjwpf7.mongodb.net/?retryWrites=true&w=majority', {
+  .connect('mongodb+srv://Eranda:2001@cluster0.qaxcgj2.mongodb.net/?retryWrites=true&w=majority', {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
