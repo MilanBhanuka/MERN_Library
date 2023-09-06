@@ -35,6 +35,7 @@ const Home = () => {
   return (
     <>
       <div className="home_page">
+        <h1>Home Page</h1>
         <button onClick={Logout}>LOGOUT</button>
       </div>
       <ToastContainer />
