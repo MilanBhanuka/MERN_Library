@@ -7,6 +7,7 @@ const cookieParser = require("cookie-parser");
 const authRoute = require("./Routes/AuthRoute");
 const BookRoutes = require("./Routes/BookRoutes");
 const AuthorRoute = require("./Routes/AuthorRoute");
+const StudentRoute = require("./Routes/StudentRoute");
 
 PORT=4000
 
@@ -37,3 +38,4 @@ app.use(express.json());
 app.use("/", authRoute);
 app.use("/Books", BookRoutes);
 app.use("/Authors", AuthorRoute);
+app.use("/Students",StudentRoute);
