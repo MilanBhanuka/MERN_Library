@@ -1,0 +1,32 @@
+Create (C):
+1. Add a new book: Enter the title, author, ISBN, publication date, genre, and copies available for a new book and add it to the library's collection.
+2. Register a new member: Input the member's name, contact information, address, and other relevant details to create a new member record.
+3. Record a book donation: Allow the librarian to input details about books donated to the library, including donor information and book attributes.
+4. Add a new category/genre: Allow library administrators to add new categories or genres for books to enhance the organization and searchability of the collection.
+5. Import books from a CSV file: Implement a feature that allows bulk import of book details from a CSV file, simplifying the process of adding multiple books to the system.
+6. Add a new author: Enable librarians to create a new author record, including details such as name, date of birth, biography, and bibliography.
+
+Read (R):
+1. Search for a book: Enable users to search for books based on various criteria such as title, author, genre, or ISBN to find specific books in the library's collection.
+2. View book availability: Display the availability status of a book, indicating whether it is currently checked out or available for borrowing.
+3. View member borrowing history: Allow librarians to access a member's borrowing history, showing the books they have borrowed and returned in the past.
+4. View popular books: Display a list of the most borrowed books in the library, helping users discover popular titles.
+5. View overdue books: Provide a list of books that are currently overdue and identify the members who have not returned them on time.
+6. View book reviews and ratings: Display user reviews and ratings for books to help other readers make informed choices.
+
+
+Update (U):
+1. Edit book information: Allow librarians to update book details such as title, author, genre, or ISBN to keep the library's collection information accurate.
+2. Update member contact information: Permit librarians to edit a member's contact details, ensuring that the library has the most current information for communication purposes.
+3. Change book status: Allow librarians to update the availability status of a book, marking it as available, checked out, or on hold.
+4. Modify member privileges: Enable administrators to update member privileges, such as changing borrowing limits or membership types.
+5. Edit book location: Allow librarians to update the physical location of a book within the library's shelves to facilitate easy retrieval.
+6. Edit author information: Allow librarians to update details of existing authors, such as correcting errors or adding more information.
+
+Delete (D):
+1. Remove a damaged book: Allow librarians to delete a book from the system when it is damaged beyond repair and is no longer part of the library's collection.
+2. Delete an outdated category/genre: Enable administrators to remove categories or genres that are no longer relevant or in use.
+3. Remove an incorrect member record: Allow librarians to delete duplicate or incorrect member records from the system.
+4. Delete a book donation: Permit librarians to remove records of donated books if they do not meet the library's collection criteria or standards.
+5. Remove inactive members: Allow administrators to delete member records of individuals who are no longer active library users or have violated library policies.
+6. Delete outdated book editions: Allow librarians to remove older editions of books when newer and updated versions become available.
