@@ -41,7 +41,7 @@ module.exports.viewStudent = async (req, res, next) => {
         if (!student) {
           return res.status(400).json({ message: "Student not found" });
         }
-        deletedStudent = await Student.findOneAndDelete(BookID );
+        deletedStudent = await Student.findOneAndDelete(StudentID );
         res
           .status(201)
           .json({ message: "Student Record Deleted", success: true, deletedStudent });
