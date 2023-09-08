@@ -28,9 +28,9 @@ const Home = () => {
     };
     //verifyCookie();
   }, [cookies, navigate, removeCookie]);
-  const Logout = () => {
+  const Continue = () => {
     removeCookie("token");
-    navigate("/signup");
+    navigate("/dashboard");
   };
   return (
     <>
@@ -42,7 +42,7 @@ const Home = () => {
         <div>
             
         </div>
-        <button onClick={Logout}>LOGOUT</button>
+        <button onClick={Continue}>CONTINUE</button>
       </div>
       <ToastContainer />
     </>
