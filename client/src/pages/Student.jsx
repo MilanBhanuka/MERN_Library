@@ -54,7 +54,7 @@ const StudentPage = () => {
 
   const handleDelete = async (StudentID) => {
     try {
-      await axios.delete(`/delete/${StudentID}`);
+      await axios.delete(`/Students/delete/${StudentID}`);
       fetchStudents();
     } catch (error) {
       console.error('Error deleting student:', error);

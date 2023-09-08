@@ -28,15 +28,21 @@ const Home = () => {
     };
     //verifyCookie();
   }, [cookies, navigate, removeCookie]);
-  const Logout = () => {
+  const Continue = () => {
     removeCookie("token");
-    navigate("/signup");
+    navigate("/dashboard");
   };
   return (
     <>
       <div className="home_page">
-        <h1>Home Page</h1>
-        <button onClick={Logout}>LOGOUT</button>
+        <h4>
+          {" "}
+          Welcome <span>{username}</span>
+        </h4>
+        <div>
+            
+        </div>
+        <button onClick={Continue}>CONTINUE</button>
       </div>
       <ToastContainer />
     </>
