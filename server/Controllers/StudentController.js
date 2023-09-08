@@ -16,6 +16,17 @@ module.exports.createStudent = async (req, res, next) => {
       }
 };
 
+module.exports.getAllStudents = async (req, res, next) => {
+  try {
+    const students = await Student.find();
+    res.status(200).json(students);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Internal server error" });
+  }
+};
+
+
 module.exports.viewStudent = async (req, res, next) => {
     try {
       const {StudentID} = req.params;
@@ -41,7 +52,7 @@ module.exports.viewStudent = async (req, res, next) => {
         if (!student) {
           return res.status(400).json({ message: "Student not found" });
         }
-        deletedStudent = await Student.findOneAndDelete(StudentID );
+        deletedStudent = await Student.findOneAndDelete({StudentID} );
         res
           .status(201)
           .json({ message: "Student Record Deleted", success: true, deletedStudent });

@@ -5,11 +5,11 @@ const app = express();
 require("dotenv").config();
 const cookieParser = require("cookie-parser");
 const authRoute = require("./Routes/AuthRoute");
-const BookRoutes = require("./Routes/BookRoutes");
+const BookRoutes = require("./Routes/BookRoutes.js");
 const AuthorRoute = require("./Routes/AuthorRoute");
 const StudentRoute = require("./Routes/StudentRoute");
 
-PORT=4000
+const PORT=4000
 
 mongoose
   .connect('mongodb+srv://Eranda:2001@cluster0.qaxcgj2.mongodb.net/?retryWrites=true&w=majority', {
