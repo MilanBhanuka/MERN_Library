@@ -25,14 +25,21 @@ const StudentPage = () => {
   };
 
   const handleChange = (e) => {
-    const { name, value } = e.target;
-    setNewStudent({ ...newStudent, [name]: value });
+    // const { name, value } = e.target;
+    // console.log(e.target);
+    setNewStudent((prev) => {
+        return{
+            ...prev,
+            [e.target.name]: e.target.value,
+        };
+    });
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log(newStudent);
     try {
-      await axios.post('/Students', newStudent);
+      await axios.post('/Students/create', newStudent);
       setNewStudent({
         StudentID: '',
         Name: '',
@@ -47,7 +54,7 @@ const StudentPage = () => {
 
   const handleDelete = async (StudentID) => {
     try {
-      await axios.delete(`/Students/${StudentID}`);
+      await axios.delete(`/delete/${StudentID}`);
       fetchStudents();
     } catch (error) {
       console.error('Error deleting student:', error);
@@ -97,7 +104,7 @@ const StudentPage = () => {
           value={newStudent.TelephoneNum}
           onChange={handleChange}
         />
-        <button type="submit" onClick={handleSubmit}>Add Student</button>
+        <button type="submit">Add Student</button>
       </form>
 
       <Link to="/dashboard">Back to Dashboard</Link>
