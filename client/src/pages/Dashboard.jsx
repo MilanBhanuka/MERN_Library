@@ -14,7 +14,7 @@ return (
   <div class="col" align="center"> </div>
   <div class="col" align="center">
 
-  <NavLink className="nav-link" to="/recordList">
+  <NavLink className="nav-link" to="/Book">
      <button type="button" class="btn p-5 mt-5 btn-outline-primary btn-lg btn-block">Books</button> <br></br><br></br>
   </NavLink>
 
