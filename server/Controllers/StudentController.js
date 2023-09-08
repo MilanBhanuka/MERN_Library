@@ -10,7 +10,7 @@ module.exports.createStudent = async (req, res, next) => {
         const CreatedStudent = await Student.create({ StudentID, Name, Email, TelephoneNum,createdAt });
         res
           .status(201)
-          .json({ message: "Created the Book log successfully", success: true, CreatedStudent });
+          .json({ message: "Created the Student log successfully", success: true, CreatedStudent });
       } catch (error) {
         console.error(error);
       }
