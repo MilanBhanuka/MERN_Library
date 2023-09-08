@@ -18,7 +18,7 @@ return (
      <button type="button" class="btn p-5 mt-5 btn-outline-primary btn-lg btn-block">Books</button> <br></br><br></br>
   </NavLink>
 
-  <NavLink className="nav-link" to="/recordList1">
+  <NavLink className="nav-link" to="/Author">
      <button type="button" class="btn p-5 mt-4 btn-outline-secondary btn-lg btn-block">Authors </button><br></br><br></br>
   </NavLink>
 

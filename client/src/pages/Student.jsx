@@ -97,7 +97,7 @@ const StudentPage = () => {
           value={newStudent.TelephoneNum}
           onChange={handleChange}
         />
-        <button type="submit">Add Student</button>
+        <button type="submit" onClick={handleSubmit}>Add Student</button>
       </form>
 
       <Link to="/dashboard">Back to Dashboard</Link>
