@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import "../styling/Book.css";
+import Dashboard from './Dashboard';
 
 const BookPage = () => {
     const [books, setBooks] = useState([]);
@@ -44,10 +46,10 @@ const BookPage = () => {
         try {
             await axios.post('/Books/create', newBook);
             setNewBook({
-              BookID: '',
-              BookName: '',
-              BookAuthor: '',
-              BookType: '',
+                BookID: '',
+                BookName: '',
+                BookAuthor: '',
+                BookType: '',
             });
             fetchBooks();
         } catch (error) {
@@ -92,90 +94,118 @@ const BookPage = () => {
 
 
     return (
-        <div>
+        <div className='home'>
             <h2>Book Page</h2>
 
-            <ul>
-                {books.map((book) => (
-                    <li key={book.BookID}>
-                        {book.BookName} ({book.BookID})
-                        <button onClick={() => handleDelete(book.BookID)}>Delete</button>
-                        <button onClick={() => handleEditClick(book)}>Edit</button>
-                    </li>
-                ))}
-            </ul>
+            <div className="book-details">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Book ID</th>
+                            <th>Book Name</th>
+                            <th>Author</th>
+                            <th>Type</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {books.map((book) => (
+                            <tr key={book.BookID}>
+                                <td>{book.BookID}</td>
+                                <td>{book.BookName}</td>
+                                <td>{book.BookAuthor}</td>
+                                <td>{book.BookType}</td>
+                                <td>
+                                    <button onClick={() => handleDelete(book.BookID)}>Delete</button>
+                                    <button onClick={() => handleEditClick(book)}>Edit</button>
+                                </td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
+            </div>
 
-            {editMode && selectedBook && (
-                <div>
-                    <h3>Edit Book</h3>
-                    <form>
-                        <input
-                            type="text"
-                            name="BookID"
-                            placeholder="Book ID"
-                            value={selectedBook.BookID}
-                            onChange={(e) => setSelectedBook({ ...selectedBook, BookID: e.target.value })}
-                        />
-                        <input
-                            type="text"
-                            name="BookName"
-                            placeholder="Book Name"
-                            value={selectedBook.BookName}
-                            onChange={(e) => setSelectedBook({ ...selectedBook, BookName: e.target.value })}
-                        />
-                        <input
-                            type="text"
-                            name="BookAuthor"
-                            placeholder="Book Author"
-                            value={selectedBook.BookAuthor}
-                            onChange={(e) => setSelectedBook({ ...selectedBook, BookAuthor: e.target.value })}
-                        />
-                        <input
-                            type="text"
-                            name="BookType"
-                            placeholder="Book Type"
-                            value={selectedBook.TelephoneNum}
-                            onChange={(e) => setSelectedBook({ ...selectedBook, BookType: e.target.value })}
-                        />
-                        <button type="button" onClick={handleUpdate}>Update</button>
-                    </form>
-                </div>
-            )}
+            <div className="form-container">
+                {editMode && selectedBook && (
+                    <div>
+                        <div className="form-center">
+                            <h3>Edit Book</h3>
+                            <form className='book-form'>
+                                <input
+                                    type="text"
+                                    name="BookID"
+                                    placeholder="Book ID"
+                                    value={selectedBook.BookID}
+                                    onChange={(e) => setSelectedBook({ ...selectedBook, BookID: e.target.value })}
+                                />
+                                <input
+                                    type="text"
+                                    name="BookName"
+                                    placeholder="Book Name"
+                                    value={selectedBook.BookName}
+                                    onChange={(e) => setSelectedBook({ ...selectedBook, BookName: e.target.value })}
+                                />
+                                <input
+                                    type="text"
+                                    name="BookAuthor"
+                                    placeholder="Book Author"
+                                    value={selectedBook.BookAuthor}
+                                    onChange={(e) => setSelectedBook({ ...selectedBook, BookAuthor: e.target.value })}
+                                />
+                                <input
+                                    type="text"
+                                    name="BookType"
+                                    placeholder="Book Type"
+                                    value={selectedBook.BookType}
+                                    onChange={(e) => setSelectedBook({ ...selectedBook, BookType: e.target.value })}
+                                />
+                                <button type="button" onClick={handleUpdate}>Save</button>
+                            </form>
+                        </div>
+                    </div>
+                )}
 
-            <h3>Add New Book</h3>
-            <form onSubmit={handleSubmit}>
-                <input
-                    type="text"
-                    name="BookID"
-                    placeholder="Book ID"
-                    value={newBook.BookID}
-                    onChange={handleChange}
-                />
-                <input
-                    type="text"
-                    name="BookName"
-                    placeholder="Book Name"
-                    value={newBook.BookName}
-                    onChange={handleChange}
-                />
-                <input
-                    type="text"
-                    name="BookAuthor"
-                    placeholder="Book Author"
-                    value={newBook.BookAuthor}
-                    onChange={handleChange}
-                />
-                <input
-                    type="text"
-                    name="BookType"
-                    placeholder="Book Type "
-                    value={newBook.BookType}
-                    onChange={handleChange}
-                />
-                <button type="submit">Add Book</button>
-            </form>
+                {!editMode && (
+                    <div>
+                        <div className="form-center">
+                            <h3>Add New Book</h3>
+                            <form onSubmit={handleSubmit} className='book-form'>
+                                <input
+                                    type="text"
+                                    name="BookID"
+                                    placeholder="Book ID"
+                                    value={newBook.BookID}
+                                    onChange={handleChange}
+                                />
+                                <input
+                                    type="text"
+                                    name="BookName"
+                                    placeholder="Book Name"
+                                    value={newBook.BookName}
+                                    onChange={handleChange}
+                                />
+                                <input
+                                    type="text"
+                                    name="BookAuthor"
+                                    placeholder="Book Author"
+                                    value={newBook.BookAuthor}
+                                    onChange={handleChange}
+                                />
+                                <input
+                                    type="text"
+                                    name="BookType"
+                                    placeholder="Book Type "
+                                    value={newBook.BookType}
+                                    onChange={handleChange}
+                                />
+                                <button type="submit" className='DashButton'>Add Book</button>
+                            </form>
+                        </div>
+                    </div>
+                )}
+            </div>
 
-            <Link to="/dashboard">Back to Dashboard</Link>
+            <Link to="/dashboard"><button className='DashButton'>Back to Dashboard</button></Link>
         </div>
     );
 };
