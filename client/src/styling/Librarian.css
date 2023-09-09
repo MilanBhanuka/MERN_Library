@@ -1,0 +1,166 @@
+.home {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+}
+
+h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.librarian-details {
+    width: fit-content;
+    border: 1px solid #ccc;
+    padding: 1rem;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(36, 29, 0, 0.1);
+}
+
+.librarian-details ul {
+    list-style: none;
+    padding: 0;
+}
+
+.librarian-details li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+
+.librarian-details button {
+    background-color: #7a6f04;
+    color: white;
+    border: none;
+    padding: 0.3rem 0.5rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.librarian-details button:hover {
+    background-color: #d3c02f;
+}
+
+.librarian-form {
+    width: 50%;
+}
+
+.librarian-form h3 {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    color: #000000;
+}
+
+.librarian-form form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    background-color: #83741c;
+    padding: 1.5rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.librarian-form input {
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+.librarian-form button {
+    background-color: #8d9112;
+    color: white;
+    border: none;
+    padding: 0.6rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.librarian-form button:hover {
+    background-color: #d4e118;
+}
+
+
+.DashButton {
+    background-color: #040228;
+    color: white;
+    border: none;
+    padding: 0.3rem 0.5rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+
+.librarian-details table {
+    width: 100%;
+
+    border-collapse: collapse;
+    margin-top: 1rem;
+}
+
+.librarian-details th,
+.librarian-details td {
+    padding: 0.5rem;
+    border: 1px solid #eeeeef;
+    text-align: center;
+
+}
+
+.librarian-details th {
+    background-color: #ffffff;
+    color: rgb(74, 62, 3);
+}
+
+.librarian-details tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.librarian-details tr:nth-child(odd) {
+    background-color: #e8f496;
+}
+
+/* .librarian-details tr:hover {
+    background-color: #ddd;
+} */
+
+
+.form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+
+.form-container>div {
+    flex: 1;
+}
+
+.form-center {
+    width: 100%;
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.form-center button {
+    display: block;
+    margin: 0 auto;
+}
+
+
+.form-center>div {
+    flex: 1;
+    width: 100%;
+    padding: 1rem;
+    box-sizing: border-box;
+}
