@@ -26,7 +26,7 @@ return (
      <button type="button" class="btn p-5 mt-4 btn-outline-success btn-lg btn-block ">Students</button><br></br><br></br>
   </NavLink>
 
-  <NavLink className="nav-link" to="/recordList3">
+  <NavLink className="nav-link" to="/Teacher">
      <button type="button" class="btn p-5 mt-4 btn-outline-danger btn-lg btn-block">Teachers</button><br></br><br></br>
   </NavLink>
 
