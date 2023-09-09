@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import "../styling/Author.css";
+import Dashboard from './Dashboard';
 
 const AuthorPage = () => {
     const [authors, setAuthors] = useState([]);
@@ -8,7 +10,7 @@ const AuthorPage = () => {
       AuthorID: '',
       AuthorName: '',
       AuthorEmail: '',
-      AuthorBooks: '',
+      AuthorAuthors: '',
     });
     const [selectedAuthor, setSelectedAuthor] = useState(null);
     const [editMode, setEditMode] = useState(false);
@@ -44,10 +46,10 @@ const AuthorPage = () => {
         try {
             await axios.post('/Authors/create', newAuthor);
             setNewAuthor({
-              AuthorID: '',
-              AuthorName: '',
-              AuthorEmail: '',
-              AuthorBooks: '',
+                AuthorID: '',
+                AuthorName: '',
+                AuthorEmail: '',
+                AuthorBooks: '',
             });
             fetchAuthors();
         } catch (error) {
@@ -76,13 +78,13 @@ const AuthorPage = () => {
         }
     };
 
-    // const handleUpdateChange = (e) => {
-    //     const { name, value } = e.target;
-    //     setSelectedAuthor((prev) => ({
-    //         ...prev,
-    //         [name]: value,
-    //     }));
-    // };
+    const handleUpdateChange = (e) => {
+        const { name, value } = e.target;
+        setSelectedAuthor((prev) => ({
+            ...prev,
+            [name]: value,
+        }));
+    };
 
     const handleEditClick = (author) => {
         setSelectedAuthor(author);
@@ -92,90 +94,118 @@ const AuthorPage = () => {
 
 
     return (
-        <div>
+        <div className='home'>
             <h2>Author Page</h2>
 
-            <ul>
-                {authors.map((author) => (
-                    <li key={author.AuthorID}>
-                        {author.AuthorName} ({author.AuthorID})
-                        <button onClick={() => handleDelete(author.AuthorID)}>Delete</button>
-                        <button onClick={() => handleEditClick(author)}>Edit</button>
-                    </li>
-                ))}
-            </ul>
+            <div className="author-details">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Author ID</th>
+                            <th>Author Name</th>
+                            <th>Author Email</th>
+                            <th>Author Books</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {authors.map((author) => (
+                            <tr key={author.AuthorID}>
+                                <td>{author.AuthorID}</td>
+                                <td>{author.AuthorName}</td>
+                                <td>{author.AuthorEmail}</td>
+                                <td>{author.AuthorBooks}</td>
+                                <td>
+                                    <button onClick={() => handleDelete(author.AuthorID)}>Delete</button>
+                                    <button onClick={() => handleEditClick(author)}>Edit</button>
+                                </td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
+            </div>
 
-            {editMode && selectedAuthor && (
-                <div>
-                    <h3>Edit Author</h3>
-                    <form>
-                    <input
-                            type="text"
-                            name="AuthorID"
-                            placeholder="Author ID"
-                            value={selectedAuthor.AuthorID}
-                            onChange={(e) => setSelectedAuthor({ ...selectedAuthor, AuthorID: e.target.value })}
-                        />
-                        <input
-                            type="text"
-                            name="AuthorName"
-                            placeholder="Author Name"
-                            value={selectedAuthor.AuthorName}
-                            onChange={(e) => setSelectedAuthor({ ...selectedAuthor, AuthorName: e.target.value })}
-                        />
-                        <input
-                            type="text"
-                            name="AuthorEmail"
-                            placeholder="Author Email"
-                            value={selectedAuthor.AuthorEmail}
-                            onChange={(e) => setSelectedAuthor({ ...selectedAuthor, AuthorEmail: e.target.value })}
-                        />
-                        <input
-                            type="text"
-                            name="AuthorBooks"
-                            placeholder="Author Books"
-                            value={selectedAuthor.AuthorBooks}
-                            onChange={(e) => setSelectedAuthor({ ...selectedAuthor, AuthorBooks: e.target.value })}
-                        />
-                        <button type="button" onClick={handleUpdate}>Update</button>
-                    </form>
-                </div>
-            )}
+            <div className="form-container">
+                {editMode && selectedAuthor && (
+                    <div>
+                        <div className="form-center">
+                            <h3>Edit Author</h3>
+                            <form className='author-form'>
+                                <input
+                                    type="text"
+                                    name="AuthorID"
+                                    placeholder="Author ID"
+                                    value={selectedAuthor.AuthorID}
+                                    onChange={(e) => setSelectedAuthor({ ...selectedAuthor, AuthorID: e.target.value })}
+                                />
+                                <input
+                                    type="text"
+                                    name="AuthorName"
+                                    placeholder="Author Name"
+                                    value={selectedAuthor.AuthorName}
+                                    onChange={(e) => setSelectedAuthor({ ...selectedAuthor, AuthorName: e.target.value })}
+                                />
+                                <input
+                                    type="text"
+                                    name="AuthorEmails"
+                                    placeholder="Author Emails"
+                                    value={selectedAuthor.AuthorEmails}
+                                    onChange={(e) => setSelectedAuthor({ ...selectedAuthor, AuthorEmails: e.target.value })}
+                                />
+                                <input
+                                    type="text"
+                                    name="AuthorBooks"
+                                    placeholder="Author Books"
+                                    value={selectedAuthor.AuthorBooks}
+                                    onChange={(e) => setSelectedAuthor({ ...selectedAuthor, AuthorBooks: e.target.value })}
+                                />
+                                <button type="button" onClick={handleUpdate}>Save</button>
+                            </form>
+                        </div>
+                    </div>
+                )}
 
-            <h3>Add New Author</h3>
-            <form onSubmit={handleSubmit}>
-                <input
-                    type="text"
-                    name="AuthorID"
-                    placeholder="Author ID"
-                    value={newAuthor.AuthorID}
-                    onChange={handleChange}
-                />
-                <input
-                    type="text"
-                    name="AuthorName"
-                    placeholder="Author Name"
-                    value={newAuthor.AuthorName}
-                    onChange={handleChange}
-                />
-                <input
-                    type="text"
-                    name="AuthorEmail"
-                    placeholder="Author Email"
-                    value={newAuthor.AuthorEmail}
-                    onChange={handleChange}
-                />
-                <input
-                    type="text"
-                    name="AuthorBooks"
-                    placeholder="Author Books"
-                    value={newAuthor.AuthorBooks}
-                    onChange={handleChange}
-                />
-                <button type="submit">Add Author</button>
-            </form>
+                {!editMode && (
+                    <div>
+                        <div className="form-center">
+                            <h3>Add New Author</h3>
+                            <form onSubmit={handleSubmit} className='author-form'>
+                                <input
+                                    type="text"
+                                    name="AuthorID"
+                                    placeholder="Author ID"
+                                    value={newAuthor.AuthorID}
+                                    onChange={handleChange}
+                                />
+                                <input
+                                    type="text"
+                                    name="AuthorName"
+                                    placeholder="Author Name"
+                                    value={newAuthor.AuthorName}
+                                    onChange={handleChange}
+                                />
+                                <input
+                                    type="text"
+                                    name="AuthorEmail"
+                                    placeholder="Author Email"
+                                    value={newAuthor.AuthorEmail}
+                                    onChange={handleChange}
+                                />
+                                <input
+                                    type="text"
+                                    name="AuthorBooks"
+                                    placeholder="Author Books "
+                                    value={newAuthor.AuthorBooks}
+                                    onChange={handleChange}
+                                />
+                                <button type="submit" className='DashButton'>Add Author</button>
+                            </form>
+                        </div>
+                    </div>
+                )}
+            </div>
 
-            <Link to="/dashboard">Back to Dashboard</Link>
+            <Link to="/dashboard"><button className='DashButton'>Back to Dashboard</button></Link>
         </div>
     );
 };
