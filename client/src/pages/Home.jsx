@@ -30,7 +30,7 @@ const Home = () => {
   }, [cookies, navigate, removeCookie]);
   const Continue = () => {
     removeCookie("token");
-    navigate("/dashboard");
+    navigate("/login");
   };
   return (
     <>
