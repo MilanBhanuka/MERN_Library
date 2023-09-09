@@ -10,7 +10,7 @@ const AuthorPage = () => {
       AuthorID: '',
       AuthorName: '',
       AuthorEmail: '',
-      AuthorAuthors: '',
+      AuthorBooks: '',
     });
     const [selectedAuthor, setSelectedAuthor] = useState(null);
     const [editMode, setEditMode] = useState(false);
@@ -149,8 +149,8 @@ const AuthorPage = () => {
                                     type="text"
                                     name="AuthorEmails"
                                     placeholder="Author Emails"
-                                    value={selectedAuthor.AuthorEmails}
-                                    onChange={(e) => setSelectedAuthor({ ...selectedAuthor, AuthorEmails: e.target.value })}
+                                    value={selectedAuthor.AuthorEmail}
+                                    onChange={(e) => setSelectedAuthor({ ...selectedAuthor, AuthorEmail: e.target.value })}
                                 />
                                 <input
                                     type="text"

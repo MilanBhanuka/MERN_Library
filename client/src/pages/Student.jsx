@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import "../styling/Student.css";
+import Dashboard from './Dashboard';
 
 const StudentPage = () => {
     const [students, setStudents] = useState([]);
@@ -76,13 +78,13 @@ const StudentPage = () => {
         }
     };
 
-    // const handleUpdateChange = (e) => {
-    //     const { name, value } = e.target;
-    //     setSelectedStudent((prev) => ({
-    //         ...prev,
-    //         [name]: value,
-    //     }));
-    // };
+    const handleUpdateChange = (e) => {
+        const { name, value } = e.target;
+        setSelectedStudent((prev) => ({
+            ...prev,
+            [name]: value,
+        }));
+    };
 
     const handleEditClick = (student) => {
         setSelectedStudent(student);
@@ -92,90 +94,118 @@ const StudentPage = () => {
 
 
     return (
-        <div>
+        <div className='home'>
             <h2>Student Page</h2>
 
-            <ul>
-                {students.map((student) => (
-                    <li key={student.StudentID}>
-                        {student.Name} ({student.StudentID})
-                        <button onClick={() => handleDelete(student.StudentID)}>Delete</button>
-                        <button onClick={() => handleEditClick(student)}>Edit</button>
-                    </li>
-                ))}
-            </ul>
+            <div className="student-details">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Student ID</th>
+                            <th>Student Name</th>
+                            <th>Student Email</th>
+                            <th>Telephone number</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {students.map((student) => (
+                            <tr key={student.StudentID}>
+                                <td>{student.StudentID}</td>
+                                <td>{student.Name}</td>
+                                <td>{student.Email}</td>
+                                <td>{student.TelephoneNum}</td>
+                                <td>
+                                    <button onClick={() => handleDelete(student.StudentID)}>Delete</button>
+                                    <button onClick={() => handleEditClick(student)}>Edit</button>
+                                </td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
+            </div>
 
-            {editMode && selectedStudent && (
-                <div>
-                    <h3>Edit Student</h3>
-                    <form>
-                        <input
-                            type="text"
-                            name="StudentID"
-                            placeholder="Student ID"
-                            value={selectedStudent.StudentID}
-                            onChange={(e) => setSelectedStudent({ ...selectedStudent, StudentID: e.target.value })}
-                        />
-                        <input
-                            type="text"
-                            name="Name"
-                            placeholder="Name"
-                            value={selectedStudent.Name}
-                            onChange={(e) => setSelectedStudent({ ...selectedStudent, Name: e.target.value })}
-                        />
-                        <input
-                            type="text"
-                            name="Email"
-                            placeholder="Email"
-                            value={selectedStudent.Email}
-                            onChange={(e) => setSelectedStudent({ ...selectedStudent, Email: e.target.value })}
-                        />
-                        <input
-                            type="text"
-                            name="TelephoneNum"
-                            placeholder="Telephone Number"
-                            value={selectedStudent.TelephoneNum}
-                            onChange={(e) => setSelectedStudent({ ...selectedStudent, TelephoneNum: e.target.value })}
-                        />
-                        <button type="button" onClick={handleUpdate}>Update</button>
-                    </form>
-                </div>
-            )}
+            <div className="form-container">
+                {editMode && selectedStudent && (
+                    <div>
+                        <div className="form-center">
+                            <h3>Edit Student</h3>
+                            <form className='student-form'>
+                                <input
+                                    type="text"
+                                    name="StudentID"
+                                    placeholder="Student ID"
+                                    value={selectedStudent.StudentID}
+                                    onChange={(e) => setSelectedStudent({ ...selectedStudent, StudentID: e.target.value })}
+                                />
+                                <input
+                                    type="text"
+                                    name="Name"
+                                    placeholder="Student Name"
+                                    value={selectedStudent.Name}
+                                    onChange={(e) => setSelectedStudent({ ...selectedStudent, Name: e.target.value })}
+                                />
+                                <input
+                                    type="text"
+                                    name="Email"
+                                    placeholder="Student Email"
+                                    value={selectedStudent.Email}
+                                    onChange={(e) => setSelectedStudent({ ...selectedStudent, Email: e.target.value })}
+                                />
+                                <input
+                                    type="text"
+                                    name="TelephoneNum"
+                                    placeholder="Student Type"
+                                    value={selectedStudent.TelephoneNum}
+                                    onChange={(e) => setSelectedStudent({ ...selectedStudent, TelephoneNum: e.target.value })}
+                                />
+                                <button type="button" onClick={handleUpdate}>Save</button>
+                            </form>
+                        </div>
+                    </div>
+                )}
 
-            <h3>Add New Student</h3>
-            <form onSubmit={handleSubmit}>
-                <input
-                    type="text"
-                    name="StudentID"
-                    placeholder="Student ID"
-                    value={newStudent.StudentID}
-                    onChange={handleChange}
-                />
-                <input
-                    type="text"
-                    name="Name"
-                    placeholder="Name"
-                    value={newStudent.Name}
-                    onChange={handleChange}
-                />
-                <input
-                    type="text"
-                    name="Email"
-                    placeholder="Email"
-                    value={newStudent.Email}
-                    onChange={handleChange}
-                />
-                <input
-                    type="text"
-                    name="TelephoneNum"
-                    placeholder="Telephone Number"
-                    value={newStudent.TelephoneNum}
-                    onChange={handleChange}
-                />
-                <button type="submit">Add Student</button>
-            </form>
+                {!editMode && (
+                    <div>
+                        <div className="form-center">
+                            <h3>Add New Student</h3>
+                            <form onSubmit={handleSubmit} className='student-form'>
+                                <input
+                                    type="text"
+                                    name="StudentID"
+                                    placeholder="Student ID"
+                                    value={newStudent.StudentID}
+                                    onChange={handleChange}
+                                />
+                                <input
+                                    type="text"
+                                    name="Name"
+                                    placeholder="Student Name"
+                                    value={newStudent.Name}
+                                    onChange={handleChange}
+                                />
+                                <input
+                                    type="text"
+                                    name="Email"
+                                    placeholder="Student Email"
+                                    value={newStudent.Email}
+                                    onChange={handleChange}
+                                />
+                                <input
+                                    type="text"
+                                    name="TelephoneNum"
+                                    placeholder="Telephone Number "
+                                    value={newStudent.TelephoneNum}
+                                    onChange={handleChange}
+                                />
+                                <button type="submit" className='DashButton'>Add Student</button>
+                            </form>
+                        </div>
+                    </div>
+                )}
+            </div>
 
-            <Link to="/dashboard">Back to Dashboard</Link>
+            <Link to="/dashboard"><button className='DashButton'>Back to Dashboard</button></Link>
         </div>
     );
 };
