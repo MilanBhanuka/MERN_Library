@@ -6,6 +6,7 @@ import AuthorPage from "./pages/Author";
 import StudentPage from "./pages/Student";
 import BookPage from "./pages/Book";
 import LibrarianPage from "./pages/Librarian";
+import TeacherPage from "./pages/Teacher";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
           <Route path="/author" element={<AuthorPage />} />
           <Route path="/Book" element={<BookPage />} />
           <Route path="/librarian" element={<LibrarianPage />} />
+          <Route path="/teacher" element={<TeacherPage />} />
         </Routes>
     </div>
   );
