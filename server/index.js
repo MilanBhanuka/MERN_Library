@@ -5,13 +5,15 @@ const app = express();
 require("dotenv").config();
 const cookieParser = require("cookie-parser");
 const authRoute = require("./Routes/AuthRoute");
-const BookRoutes = require("./Routes/BookRoutes");
+const BookRoutes = require("./Routes/BookRoutes.js");
 const AuthorRoute = require("./Routes/AuthorRoute");
+const StudentRoute = require("./Routes/StudentRoute");
+const LibrarianRoute = require("./Routes/LibrarianRoute");
 
-PORT=4000
+const PORT=4000
 
 mongoose
-  .connect('mongodb+srv://milan:1234@library.gnjwpf7.mongodb.net/?retryWrites=true&w=majority', {
+  .connect('mongodb+srv://Eranda:2001@cluster0.qaxcgj2.mongodb.net/?retryWrites=true&w=majority', {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
@@ -37,3 +39,5 @@ app.use(express.json());
 app.use("/", authRoute);
 app.use("/Books", BookRoutes);
 app.use("/Authors", AuthorRoute);
+app.use("/Students",StudentRoute);
+app.use("/Librarians",LibrarianRoute);
