@@ -76,13 +76,13 @@ const LibrarianPage = () => {
         }
     };
 
-    const handleUpdateChange = (e) => {
-        const { name, value } = e.target;
-        setSelectedLibrarian((prev) => ({
-            ...prev,
-            [name]: value,
-        }));
-    };
+    // const handleUpdateChange = (e) => {
+    //     const { name, value } = e.target;
+    //     setSelectedLibrarian((prev) => ({
+    //         ...prev,
+    //         [name]: value,
+    //     }));
+    // };
 
     const handleEditClick = (librarian) => {
         setSelectedLibrarian(librarian);

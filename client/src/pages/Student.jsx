@@ -76,13 +76,13 @@ const StudentPage = () => {
         }
     };
 
-    const handleUpdateChange = (e) => {
-        const { name, value } = e.target;
-        setSelectedStudent((prev) => ({
-            ...prev,
-            [name]: value,
-        }));
-    };
+    // const handleUpdateChange = (e) => {
+    //     const { name, value } = e.target;
+    //     setSelectedStudent((prev) => ({
+    //         ...prev,
+    //         [name]: value,
+    //     }));
+    // };
 
     const handleEditClick = (student) => {
         setSelectedStudent(student);
