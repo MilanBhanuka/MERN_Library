@@ -108,7 +108,7 @@ return (
                     </tr>
                 </thead>
                 <tbody>
-                    {books.map((teacher) => (
+                    {teachers.map((teacher) => (
                         <tr key={teacher.TeacherID}>
                             <td>{teacher.TeacherID}</td>
                             <td>{teacher.Name}</td>
@@ -135,28 +135,28 @@ return (
                                 name="TeacherID"
                                 placeholder="Teacher ID"
                                 value={selectedTeacher.TeacherID}
-                                onChange={(e) => setSelectedBook({ ...selectedTeacher, TeacherID: e.target.value })}
+                                onChange={(e) => setSelectedTeacher({ ...selectedTeacher, TeacherID: e.target.value })}
                             />
                             <input
                                 type="text"
                                 name="Name"
                                 placeholder="teacher Name"
                                 value={selectedTeacher.Name}
-                                onChange={(e) => setSelectedBook({ ...selectedTeacher, Name: e.target.value })}
+                                onChange={(e) => setSelectedTeacher({ ...selectedTeacher, Name: e.target.value })}
                             />
                             <input
                                 type="text"
                                 name="Email"
                                 placeholder="teacher Email"
                                 value={selectedTeacher.Email}
-                                onChange={(e) => setSelectedBook({ ...selectedTeacher, Email: e.target.value })}
+                                onChange={(e) => setSelectedTeacher({ ...selectedTeacher, Email: e.target.value })}
                             />
                             <input
                                 type="text"
                                 name="Telnum"
                                 placeholder="Telephone number "
                                 value={selectedTeacher.Telnum}
-                                onChange={(e) => setSelectedBook({ ...selectedTeacher, Telnum: e.target.value })}
+                                onChange={(e) => setSelectedTeacher({ ...selectedTeacher, Telnum: e.target.value })}
                             />
                             <button type="button" onClick={handleUpdate}>Save</button>
                         </form>
