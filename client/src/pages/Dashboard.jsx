@@ -4,7 +4,7 @@ export default function Dashboard() {
 return (
 <div>
   <nav class="navbar navbar-expand-xl navbar-light bg-dark">
-   <NavLink className="nav-link" to="/login">
+   <NavLink className="nav-link" to="/">
     <button class="btn btn-light " style={{marginLeft: 20, fontSize: 15}} href=".png"> Log Out</button> 
   </NavLink>
   </nav>
