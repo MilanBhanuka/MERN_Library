@@ -1,0 +1,166 @@
+.home {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+}
+
+h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.teacher-details {
+    width: fit-content;
+    border: 1px solid #ccc;
+    padding: 1rem;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(36, 0, 34, 0.1);
+}
+
+.teacher-details ul {
+    list-style: none;
+    padding: 0;
+}
+
+.teacher-details li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+
+.teacher-details button {
+    background-color: #672004;
+    color: white;
+    border: none;
+    padding: 0.3rem 0.5rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.teacher-details button:hover {
+    background-color: #d32f2f;
+}
+
+.teacher-form {
+    width: 50%;
+}
+
+.teacher-form h3 {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    color: #000000;
+}
+
+.teacher-form form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    background-color: #831c1c;
+    padding: 1.5rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.teacher-form input {
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+.teacher-form button {
+    background-color: #61060c;
+    color: white;
+    border: none;
+    padding: 0.6rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.teacher-form button:hover {
+    background-color: #d47c7f;
+}
+
+
+.DashButton {
+    background-color: #180107;
+    color: white;
+    border: none;
+    padding: 0.6rem 0.5rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+
+.teacher-details table {
+    width: 100%;
+
+    border-collapse: collapse;
+    margin-top: 1rem;
+}
+
+.teacher-details th,
+.teacher-details td {
+    padding: 0.5rem;
+    border: 1px solid #eeeeef;
+    text-align: center;
+
+}
+
+.teacher-details th {
+    background-color: #ffffff;
+    color: rgb(37, 2, 4);
+}
+
+.teacher-details tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.teacher-details tr:nth-child(odd) {
+    background-color: #f496af;
+}
+
+/* .student-details tr:hover {
+    background-color: #ddd;
+} */
+
+
+.form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+
+.form-container>div {
+    flex: 1;
+}
+
+.form-center {
+    width: 100%;
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.form-center button {
+    display: block;
+    margin: 0 auto;
+}
+
+
+.form-center>div {
+    flex: 1;
+    width: 100%;
+    padding: 1rem;
+    box-sizing: border-box;
+}
