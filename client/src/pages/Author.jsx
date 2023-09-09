@@ -10,7 +10,7 @@ const AuthorPage = () => {
       AuthorID: '',
       AuthorName: '',
       AuthorEmail: '',
-      AuthorAuthors: '',
+      AuthorBooks: '',
     });
     const [selectedAuthor, setSelectedAuthor] = useState(null);
     const [editMode, setEditMode] = useState(false);
