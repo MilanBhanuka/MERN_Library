@@ -22,8 +22,8 @@ const Home = () => {
       setUsername(user);
       return status
         ? toast(`Hello ${user}`, {
-            position: "top-right",
-          })
+          position: "top-right",
+        })
         : (removeCookie("token"), navigate("/login"));
     };
     //verifyCookie();
@@ -35,16 +35,18 @@ const Home = () => {
   return (
     <>
       <div className="home_page">
-        <h4>
-          {" "}
-          Welcome <span>{username}</span>
-        </h4>
-        <div>
-            
+        <div className="content">
+          <h4>
+            {" "}
+            Welcome <span>{username}</span>
+          </h4>
+          <div>
+
+          </div>
+          <button onClick={Continue}>CONTINUE</button>
         </div>
-        <button onClick={Continue}>CONTINUE</button>
+        <ToastContainer />
       </div>
-      <ToastContainer />
     </>
   );
 };
