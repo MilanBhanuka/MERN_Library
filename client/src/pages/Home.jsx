@@ -34,16 +34,16 @@ const Home = () => {
   };
   return (
     <>
-      <div className="home_page">
-        <div className="content">
-          <h4>
+      <div className="home_page"align="center">
+        <div className="content" align="center">
+          <h2>
             {" "}
-            Welcome <span>{username}</span>
-          </h4>
+            Welcome to <br></br> Grand Library, Colombo
+          </h2>
           <div>
 
           </div>
-          <button onClick={Continue}>CONTINUE</button>
+          <button onClick={Continue}>Get Started</button>
         </div>
         <ToastContainer />
       </div>
