@@ -8,6 +8,7 @@ const authRoute = require("./Routes/AuthRoute");
 const BookRoutes = require("./Routes/BookRoutes.js");
 const AuthorRoute = require("./Routes/AuthorRoute");
 const StudentRoute = require("./Routes/StudentRoute");
+const LibrarianRoute = require("./Routes/LibrarianRoute");
 
 const PORT=4000
 
@@ -39,3 +40,4 @@ app.use("/", authRoute);
 app.use("/Books", BookRoutes);
 app.use("/Authors", AuthorRoute);
 app.use("/Students",StudentRoute);
+app.use("/Librarians",LibrarianRoute);

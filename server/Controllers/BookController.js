@@ -16,40 +16,50 @@ module.exports.createBook = async (req, res, next) => {
   }
 };
 
-module.exports.viewBook = async (req, res, next) => {
+module.exports.getAllBooks = async (req, res, next) => {
   try {
-    const {BookID} = req.params;
-
-    const book = await Book.findOne({ BookID });
-    if (!book) {
-      return res.status(400).json({ message: "Book not found" });
-    }
-    res
-      .status(201)
-      .json({ message: "Book Found", success: true, book });
+    const books = await Book.find();
+    res.status(200).json(books);
   } catch (error) {
     console.error(error);
+    res.status(500).json({ message: "Internal server error" });
   }
 };
 
 
-module.exports.deleteBook = async (req, res, next) => {
+module.exports.viewBook = async (req, res, next) => {
     try {
-      const { BookID} = req.params;
+      const {BookID} = req.params;
   
       const book = await Book.findOne({ BookID });
       if (!book) {
         return res.status(400).json({ message: "Book not found" });
       }
-      deletedBook = await Book.findOneAndDelete(BookID );
       res
         .status(201)
-        .json({ message: "Book Record Deleted", success: true, deletedBook });
+        .json({ message: "Book Found", success: true, book });
     } catch (error) {
       console.error(error);
     }
   };
-
+  
+  
+  module.exports.deleteBook = async (req, res, next) => {
+      try {
+        const { BookID} = req.params;
+    
+        const book = await Book.findOne({ BookID });
+        if (!book) {
+          return res.status(400).json({ message: "Book not found" });
+        }
+        deletedBook = await Book.findOneAndDelete({BookID} );
+        res
+          .status(201)
+          .json({ message: "Book Record Deleted", success: true, deletedBook });
+      } catch (error) {
+        console.error(error);
+      }
+    };
 
 module.exports.updateBook = async (req, res) => {
   try {

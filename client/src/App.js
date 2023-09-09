@@ -1,10 +1,11 @@
-import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
-import { Login, Signup, Student } from "./pages";
+import { Route, Routes } from "react-router-dom";
+import { Login, Signup} from "./pages";
 import Home from "./pages/Home";
 import Dashboard from "./pages/Dashboard";
 import AuthorPage from "./pages/Author";
 import StudentPage from "./pages/Student";
 import BookPage from "./pages/Book";
+import LibrarianPage from "./pages/Librarian";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
           <Route path="/student" element={<StudentPage />} />
           <Route path="/author" element={<AuthorPage />} />
           <Route path="/Book" element={<BookPage />} />
+          <Route path="/librarian" element={<LibrarianPage />} />
         </Routes>
     </div>
   );

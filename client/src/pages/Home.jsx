@@ -22,29 +22,31 @@ const Home = () => {
       setUsername(user);
       return status
         ? toast(`Hello ${user}`, {
-            position: "top-right",
-          })
+          position: "top-right",
+        })
         : (removeCookie("token"), navigate("/login"));
     };
     //verifyCookie();
   }, [cookies, navigate, removeCookie]);
   const Continue = () => {
     removeCookie("token");
-    navigate("/dashboard");
+    navigate("/login");
   };
   return (
     <>
-      <div className="home_page">
-        <h4>
-          {" "}
-          Welcome <span>{username}</span>
-        </h4>
-        <div>
-            
+      <div className="home_page"align="center">
+        <div className="content" align="center">
+          <h2>
+            {" "}
+            Welcome to <br></br> Grand Library, Colombo
+          </h2>
+          <div>
+
+          </div>
+          <button onClick={Continue}>Get Started</button>
         </div>
-        <button onClick={Continue}>CONTINUE</button>
+        <ToastContainer />
       </div>
-      <ToastContainer />
     </>
   );
 };
