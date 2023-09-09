@@ -1,5 +1,5 @@
-import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
-import { Login, Signup, Student } from "./pages";
+import { Route, Routes } from "react-router-dom";
+import { Login, Signup} from "./pages";
 import Home from "./pages/Home";
 import Dashboard from "./pages/Dashboard";
 import AuthorPage from "./pages/Author";
