@@ -1,43 +1,50 @@
 import { NavLink } from "react-router-dom";
+import "../styling/Dashboard.css";
 
 export default function Dashboard() {
-return (
-<div>
-  <nav class="navbar navbar-expand-xl navbar-light bg-dark">
-   <NavLink className="nav-link" to="/login">
-    <button class="btn btn-light " style={{marginLeft: 20, fontSize: 15}} href=".png"> Log Out</button> 
-  </NavLink>
-  </nav>
-  
-  <div class="row p-5">
-      <h1 align="center">BOOK MANAGEMENT SYSTEM</h1>
-  <div class="col" align="center"> </div>
-  <div class="col" align="center">
+    return (
+        <div>
+            <nav className="navbar navbar-expand-xl navbar-light bg-dark">
+                    <NavLink className="nav-link" to="/">
+                        <button className="btn btn-logout">Log Out</button>
+                    </NavLink>
+            </nav>
 
-  <NavLink className="nav-link" to="/Book">
-     <button type="button" class="btn p-5 mt-5 btn-outline-primary btn-lg btn-block">Books</button> <br></br><br></br>
-  </NavLink>
+            <div className="dashboard-container">
+                <h1 className="dashboard-title">BOOK MANAGEMENT SYSTEM</h1>
 
-  <NavLink className="nav-link" to="/Author">
-     <button type="button" class="btn p-5 mt-4 btn-outline-secondary btn-lg btn-block">Authors </button><br></br><br></br>
-  </NavLink>
+                <div className="row">
+                    <div className="col" align="center">
+                        <NavLink className="nav-link" to="/Book">
+                            <button className="btn btn-primary btn-lg btn-block">Books</button>
+                        </NavLink>
+                    </div>
 
-  <NavLink className="nav-link" to="/Student">
-     <button type="button" class="btn p-5 mt-4 btn-outline-success btn-lg btn-block ">Students</button><br></br><br></br>
-  </NavLink>
+                    <div className="col" align="center">
+                        <NavLink className="nav-link" to="/Author">
+                            <button className="btn btn-secondary btn-lg btn-block">Authors</button>
+                        </NavLink>
+                    </div>
 
-  <NavLink className="nav-link" to="/Teacher">
-     <button type="button" class="btn p-5 mt-4 btn-outline-danger btn-lg btn-block">Teachers</button><br></br><br></br>
-  </NavLink>
+                    <div className="col" align="center">
+                        <NavLink className="nav-link" to="/Student">
+                            <button className="btn btn-success btn-lg btn-block">Students</button>
+                        </NavLink>
+                    </div>
 
-  <NavLink className="nav-link" to="/Librarian">
-     <button type="button" class="btn p-5 mt-4 btn-outline-warning btn-lg btn-block">Librarians</button>
-  </NavLink>
+                    <div className="col" align="center">
+                        <NavLink className="nav-link" to="/Teacher">
+                            <button className="btn btn-danger btn-lg btn-block">Teachers</button>
+                        </NavLink>
+                    </div>
 
-    </div>
-    <div class="col" align="center"> </div>
-   </div>
-</div>
- );
+                    <div className="col" align="center">
+                        <NavLink className="nav-link" to="/Librarian">
+                            <button className="btn btn-warning btn-lg btn-block">Librarians</button>
+                        </NavLink>
+                    </div>
+                </div>
+            </div>
+        </div>
+    );
 }
-
