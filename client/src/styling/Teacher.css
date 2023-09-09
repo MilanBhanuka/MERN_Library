@@ -31,7 +31,7 @@ h2 {
 }
 
 .teacher-details button {
-    background-color: #04671b;
+    background-color: #672004;
     color: white;
     border: none;
     padding: 0.3rem 0.5rem;
@@ -41,7 +41,7 @@ h2 {
 }
 
 .teacher-details button:hover {
-    background-color: #2fd353;
+    background-color: #d32f2f;
 }
 
 .teacher-form {
@@ -58,7 +58,7 @@ h2 {
     display: flex;
     flex-direction: column;
     gap: 1rem;
-    background-color: #1c834a;
+    background-color: #831c1c;
     padding: 1.5rem;
     border: 1px solid #ccc;
     border-radius: 4px;
@@ -74,7 +74,7 @@ h2 {
 }
 
 .teacher-form button {
-    background-color: #129152;
+    background-color: #61060c;
     color: white;
     border: none;
     padding: 0.6rem 1rem;
@@ -84,12 +84,12 @@ h2 {
 }
 
 .teacher-form button:hover {
-    background-color: #7cd4bc;
+    background-color: #d47c7f;
 }
 
 
 .DashButton {
-    background-color: #11a062;
+    background-color: #180107;
     color: white;
     border: none;
     padding: 0.6rem 0.5rem;
@@ -116,7 +116,7 @@ h2 {
 
 .teacher-details th {
     background-color: #ffffff;
-    color: rgb(3, 74, 55);
+    color: rgb(37, 2, 4);
 }
 
 .teacher-details tr:nth-child(even) {
@@ -124,7 +124,7 @@ h2 {
 }
 
 .teacher-details tr:nth-child(odd) {
-    background-color: #96f4c2;
+    background-color: #f496af;
 }
 
 /* .student-details tr:hover {
