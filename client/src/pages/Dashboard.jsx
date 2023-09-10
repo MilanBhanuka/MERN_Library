@@ -11,7 +11,7 @@ export default function Dashboard() {
             </nav>
 
             <div className="dashboard-container">
-                <h1 className="dashboard-title">BOOK MANAGEMENT SYSTEM</h1>
+                <h1 className="dashboard-title">LIBRARY MANAGEMENT SYSTEM</h1>
 
                 <div className="row">
                     <div className="col" align="center">
