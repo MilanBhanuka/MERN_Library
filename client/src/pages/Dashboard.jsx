@@ -46,7 +46,7 @@ export default function Dashboard() {
         <div>
             <nav className="navbar navbar-expand-xl navbar-light bg-dark">
                     <NavLink className="nav-link" to="/">
-                        <button className="btn btn-logout">Log Out</button>
+                        <button className="logout">Log Out</button>
                     </NavLink>
             </nav>
 
@@ -56,31 +56,31 @@ export default function Dashboard() {
                 <div className="row">
                     <div className="col" align="center">
                         <NavLink className="nav-link" to="/Book">
-                            <button className="btn btn-primary btn-lg btn-block">Books</button>
+                            <button className="buttonB">Books</button>
                         </NavLink>
                     </div>
 
                     <div className="col" align="center">
                         <NavLink className="nav-link" to="/Author">
-                            <button className="btn btn-secondary btn-lg btn-block">Authors</button>
+                            <button className="buttonA">Authors</button>
                         </NavLink>
                     </div>
 
                     <div className="col" align="center">
                         <NavLink className="nav-link" to="/Student">
-                            <button className="btn btn-success btn-lg btn-block">Students</button>
+                            <button className="buttonS">Students</button>
                         </NavLink>
                     </div>
 
                     <div className="col" align="center">
                         <NavLink className="nav-link" to="/Teacher">
-                            <button className="btn btn-danger btn-lg btn-block">Teachers</button>
+                            <button className="buttonT">Teachers</button>
                         </NavLink>
                     </div>
 
                     <div className="col" align="center">
                         <NavLink className="nav-link" to="/Librarian">
-                            <button className="btn btn-warning btn-lg btn-block">Librarians</button>
+                            <button className="buttonL">Librarians</button>
                         </NavLink>
                     </div>
                 </div>
