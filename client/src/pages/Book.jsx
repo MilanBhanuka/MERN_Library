@@ -1,15 +1,55 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
+import { useCookies } from "react-cookie";
 import axios from 'axios';
 import "../styling/Book.css";
-import Dashboard from './Dashboard';
 
 const BookPage = () => {
+
+                const navigate = useNavigate();
+                const [cookies, removeCookie] = useCookies([]);
+                useEffect(() => {
+                    const verifyCookie = async () => {
+                      if (!cookies.token) {
+                       navigate("/login");
+                      } else {
+                        try {
+                          const response = await fetch("http://localhost:4000", {
+                            method: "POST",
+                            credentials: "include",
+                          });
+                
+                          if (!response.ok) {
+                            throw new Error("Network response was not ok");
+                          }
+                
+                          const data = await response.json();
+                          const { status, user } = data;
+                
+                          if (!status) {
+                            removeCookie("token");
+                             navigate("/login");
+                          } 
+                        } catch (error) {
+                          console.error("Error fetching data:", error);
+                          removeCookie("token");
+                          navigate("/login");
+                          
+                        }
+                      }
+                    };
+                    verifyCookie();
+                }, [cookies, navigate, removeCookie]);
+
+
+
+
     const [books, setBooks] = useState([]);
     const [newBook, setNewBook] = useState({
         BookID: '',
         BookName: '',
-        BookAuthor: '',
+        BookBook: '',
         BookType: '',
     });
     const [selectedBook, setSelectedBook] = useState(null);
@@ -48,7 +88,7 @@ const BookPage = () => {
             setNewBook({
                 BookID: '',
                 BookName: '',
-                BookAuthor: '',
+                BookBook: '',
                 BookType: '',
             });
             fetchBooks();
@@ -103,8 +143,8 @@ const BookPage = () => {
                         <tr>
                             <th>Book ID</th>
                             <th>Book Name</th>
-                            <th>Author</th>
-                            <th>Type</th>
+                            <th>Book Book</th>
+                            <th>Book Type</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
@@ -113,7 +153,7 @@ const BookPage = () => {
                             <tr key={book.BookID}>
                                 <td>{book.BookID}</td>
                                 <td>{book.BookName}</td>
-                                <td>{book.BookAuthor}</td>
+                                <td>{book.BookBook}</td>
                                 <td>{book.BookType}</td>
                                 <td>
                                     <button onClick={() => handleDelete(book.BookID)}>Delete</button>
@@ -147,10 +187,10 @@ const BookPage = () => {
                                 />
                                 <input
                                     type="text"
-                                    name="BookAuthor"
-                                    placeholder="Book Author"
-                                    value={selectedBook.BookAuthor}
-                                    onChange={(e) => setSelectedBook({ ...selectedBook, BookAuthor: e.target.value })}
+                                    name="Book Book"
+                                    placeholder="Book Book"
+                                    value={selectedBook.BookBook}
+                                    onChange={(e) => setSelectedBook({ ...selectedBook, BookBook: e.target.value })}
                                 />
                                 <input
                                     type="text"
@@ -186,9 +226,9 @@ const BookPage = () => {
                                 />
                                 <input
                                     type="text"
-                                    name="BookAuthor"
-                                    placeholder="Book Author"
-                                    value={newBook.BookAuthor}
+                                    name="BookBook"
+                                    placeholder="Book Book"
+                                    value={newBook.BookBook}
                                     onChange={handleChange}
                                 />
                                 <input
@@ -207,7 +247,6 @@ const BookPage = () => {
 
             <Link to="/dashboard"><button className='DashButton'>Back to Dashboard</button></Link>
         </div>
-    );
+    );
 };
-
 export default BookPage;
