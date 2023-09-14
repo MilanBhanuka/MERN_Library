@@ -43,8 +43,6 @@ const StudentPage = () => {
                 }, [cookies, navigate, removeCookie]);
 
 
-
-
     const [students, setStudents] = useState([]);
     const [newStudent, setNewStudent] = useState({
         StudentID: '',
