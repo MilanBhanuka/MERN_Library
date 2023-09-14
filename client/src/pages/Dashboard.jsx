@@ -1,7 +1,47 @@
+import React, { useEffect, useState } from "react";
+
 import { NavLink } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { useCookies } from "react-cookie";
 import "../styling/Dashboard.css";
 
+
 export default function Dashboard() {
+    const navigate = useNavigate();
+    const [cookies, removeCookie] = useCookies([]);
+    useEffect(() => {
+        const verifyCookie = async () => {
+          if (!cookies.token) {
+           navigate("/login");
+          } else {
+            try {
+              const response = await fetch("http://localhost:4000", {
+                method: "POST",
+                credentials: "include",
+              });
+    
+              if (!response.ok) {
+                throw new Error("Network response was not ok");
+              }
+    
+              const data = await response.json();
+              const { status, user } = data;
+    
+              if (!status) {
+                removeCookie("token");
+                 navigate("/login");
+              } 
+            } catch (error) {
+              console.error("Error fetching data:", error);
+              removeCookie("token");
+              navigate("/login");
+              
+            }
+          }
+        };
+        verifyCookie();
+    }, [cookies, navigate, removeCookie]);
+    
     return (
         <div>
             <nav className="navbar navbar-expand-xl navbar-light bg-dark">
