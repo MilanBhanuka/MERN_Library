@@ -1,10 +1,50 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
+import { useCookies } from "react-cookie";
 import axios from 'axios';
 import "../styling/Teacher.css";
-import Dashboard from './Dashboard';
 
 const TeacherPage = () => {
+
+                const navigate = useNavigate();
+                const [cookies, removeCookie] = useCookies([]);
+                useEffect(() => {
+                    const verifyCookie = async () => {
+                      if (!cookies.token) {
+                       navigate("/login");
+                      } else {
+                        try {
+                          const response = await fetch("http://localhost:4000", {
+                            method: "POST",
+                            credentials: "include",
+                          });
+                
+                          if (!response.ok) {
+                            throw new Error("Network response was not ok");
+                          }
+                
+                          const data = await response.json();
+                          const { status, user } = data;
+                
+                          if (!status) {
+                            removeCookie("token");
+                             navigate("/login");
+                          } 
+                        } catch (error) {
+                          console.error("Error fetching data:", error);
+                          removeCookie("token");
+                          navigate("/login");
+                          
+                        }
+                      }
+                    };
+                    verifyCookie();
+                }, [cookies, navigate, removeCookie]);
+
+
+
+
     const [teachers, setTeachers] = useState([]);
     const [newTeacher, setNewTeacher] = useState({
         TeacherID: '',
@@ -104,7 +144,7 @@ const TeacherPage = () => {
                             <th>Teacher ID</th>
                             <th>Teacher Name</th>
                             <th>Teacher Email</th>
-                            <th>Telephone number</th>
+                            <th>Teacher Telephone num</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
@@ -155,7 +195,7 @@ const TeacherPage = () => {
                                 <input
                                     type="text"
                                     name="TelephoneNum"
-                                    placeholder="Teacher Type"
+                                    placeholder="Teacher Telephone Num"
                                     value={selectedTeacher.TelephoneNum}
                                     onChange={(e) => setSelectedTeacher({ ...selectedTeacher, TelephoneNum: e.target.value })}
                                 />
@@ -194,7 +234,7 @@ const TeacherPage = () => {
                                 <input
                                     type="text"
                                     name="TelephoneNum"
-                                    placeholder="Telephone Number "
+                                    placeholder="Teacher Telephone Num"
                                     value={newTeacher.TelephoneNum}
                                     onChange={handleChange}
                                 />
@@ -207,7 +247,6 @@ const TeacherPage = () => {
 
             <Link to="/dashboard"><button className='DashButton'>Back to Dashboard</button></Link>
         </div>
-    );
+    );
 };
-
 export default TeacherPage;

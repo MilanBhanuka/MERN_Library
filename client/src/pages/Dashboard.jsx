@@ -46,7 +46,7 @@ export default function Dashboard() {
         <div>
             <nav className="navbar navbar-expand-xl navbar-light bg-dark">
                     <NavLink className="nav-link" to="/">
-                        <button className="logout">Log Out</button>
+                        <button className="logout" onClick={() => removeCookie("token")}>Log Out</button>
                     </NavLink>
             </nav>
 
