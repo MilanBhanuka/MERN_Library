@@ -1,49 +1,48 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import axios from 'axios';
-import "../styling/Student.css";
-import Dashboard from './Dashboard';
 import { useNavigate } from "react-router-dom";
 import { useCookies } from "react-cookie";
-
-export default function Student() {
-    const navigate = useNavigate();
-    const [cookies, removeCookie] = useCookies([]);
-    useEffect(() => {
-        const verifyCookie = async () => {
-          if (!cookies.token) {
-           navigate("/login");
-          } else {
-            try {
-              const response = await fetch("http://localhost:4000", {
-                method: "POST",
-                credentials: "include",
-              });
-    
-              if (!response.ok) {
-                throw new Error("Network response was not ok");
-              }
-    
-              const data = await response.json();
-              const { status, user } = data;
-    
-              if (!status) {
-                removeCookie("token");
-                 navigate("/login");
-              } 
-            } catch (error) {
-              console.error("Error fetching data:", error);
-              removeCookie("token");
-              navigate("/login");
-              
-            }
-          }
-        };
-        verifyCookie();
-    }, [cookies, navigate, removeCookie]);
-
+import axios from 'axios';
+import "../styling/Student.css";
 
 const StudentPage = () => {
+
+                const navigate = useNavigate();
+                const [cookies, removeCookie] = useCookies([]);
+                useEffect(() => {
+                    const verifyCookie = async () => {
+                      if (!cookies.token) {
+                       navigate("/login");
+                      } else {
+                        try {
+                          const response = await fetch("http://localhost:4000", {
+                            method: "POST",
+                            credentials: "include",
+                          });
+                
+                          if (!response.ok) {
+                            throw new Error("Network response was not ok");
+                          }
+                
+                          const data = await response.json();
+                          const { status, user } = data;
+                
+                          if (!status) {
+                            removeCookie("token");
+                             navigate("/login");
+                          } 
+                        } catch (error) {
+                          console.error("Error fetching data:", error);
+                          removeCookie("token");
+                          navigate("/login");
+                          
+                        }
+                      }
+                    };
+                    verifyCookie();
+                }, [cookies, navigate, removeCookie]);
+
+
     const [students, setStudents] = useState([]);
     const [newStudent, setNewStudent] = useState({
         StudentID: '',
@@ -143,7 +142,7 @@ const StudentPage = () => {
                             <th>Student ID</th>
                             <th>Student Name</th>
                             <th>Student Email</th>
-                            <th>Telephone number</th>
+                            <th>Student Telephone num</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
@@ -194,7 +193,7 @@ const StudentPage = () => {
                                 <input
                                     type="text"
                                     name="TelephoneNum"
-                                    placeholder="Student Type"
+                                    placeholder="Student Telephone Num"
                                     value={selectedStudent.TelephoneNum}
                                     onChange={(e) => setSelectedStudent({ ...selectedStudent, TelephoneNum: e.target.value })}
                                 />
@@ -233,7 +232,7 @@ const StudentPage = () => {
                                 <input
                                     type="text"
                                     name="TelephoneNum"
-                                    placeholder="Telephone Number "
+                                    placeholder="Student Telephone Num"
                                     value={newStudent.TelephoneNum}
                                     onChange={handleChange}
                                 />
@@ -246,7 +245,6 @@ const StudentPage = () => {
 
             <Link to="/dashboard"><button className='DashButton'>Back to Dashboard</button></Link>
         </div>
-    );
+    );
 };
-
-}
+export default StudentPage;

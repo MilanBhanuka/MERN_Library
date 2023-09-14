@@ -36,10 +36,11 @@ const Home = () => {
     <>
       <div className="home_page"align="center">
         <div className="content" align="center">
-          <h2>
+          <h1>
             {" "}
             Welcome to <br></br> Grand Library, Colombo
-          </h2>
+            <br></br><br></br>
+          </h1>
           <div>
 
           </div>

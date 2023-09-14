@@ -5,11 +5,11 @@
     text-decoration: none;
   }
   
-  .btn-logout {
+  .logout {
     margin-left: 1000px;
     font-size: 18px;
-    background-color: lightgray;
-    color: black;
+    background-color: rgb(0, 0, 0);
+    color: rgb(255, 255, 255);
     border: none;
     padding: 10px 20px;
     border-radius: 10px;
@@ -17,13 +17,23 @@
     transition: background-color 0.3s ease;
   }
   
-  .btn-logout:hover {
+  .logout:hover {
     background-color: gray;
+    color: #000;
   }
   
   /* Style for the main dashboard content */
   .dashboard-container {
+    font-family: 'Lucida Sans';
+
     padding: 20px;
+    margin: 0 auto;
+    width: 100%;
+    max-width: 1000px;
+    border-radius: 10px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
   }
   
   .dashboard-title {
@@ -37,41 +47,66 @@
     margin-top: 20px;
   }
   
-  .btn-primary,
-  .btn-secondary,
-  .btn-success,
-  .btn-danger,
-  .btn-warning {
+  .buttonB{
+    background-color: #415aff;
     font-size: 24px;
     border-radius: 20px;
     padding: 20px 40px;
     margin-bottom: 20px;
   }
-  
-  .btn-primary {
-    background-color: #007bff;
+  .buttonB:hover{
+    background-color: #071d08;
+    color: white;
+  }
+
+  .buttonA{
+    background-color: #e40ce8b1;
+    font-size: 24px;
+    border-radius: 20px;
+    padding: 20px 40px;
+    margin-bottom: 20px;
+  }
+  .buttonA:hover{
+    background-color: #071d08;
+    color: white;
+  }
+
+  .buttonS{
+    background-color: #2fa48f;
+    font-size: 24px;
+    border-radius: 20px;
+    padding: 20px 40px;
+    margin-bottom: 20px;
+  }
+  .buttonS:hover{
+    background-color: #071d08;
     color: white;
   }
   
-  .btn-secondary {
-    background-color: #6c757d;
+  .buttonT{
+    background-color: #e53a3a;
+    font-size: 24px;
+    border-radius: 20px;
+    padding: 20px 40px;
+    margin-bottom: 20px;
+  }
+  .buttonT:hover{
+    background-color: #071d08;
     color: white;
   }
-  
-  .btn-success {
-    background-color: #28a745;
+  .buttonL{
+    background-color: #e9e22d;
+    font-size: 24px;
+    border-radius: 20px;
+    padding: 20px 40px;
+    margin-bottom: 20px;
+  }
+  .buttonL:hover{
+    background-color: #071d08;
     color: white;
   }
-  
-  .btn-danger {
-    background-color: #dc3545;
-    color: white;
-  }
-  
-  .btn-warning {
-    background-color: #ffc107;
-    color: white;
-  }
+
+
 
   
   
