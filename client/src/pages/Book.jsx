@@ -49,7 +49,7 @@ const BookPage = () => {
     const [newBook, setNewBook] = useState({
         BookID: '',
         BookName: '',
-        BookBook: '',
+        BookAuthor: '',
         BookType: '',
     });
     const [selectedBook, setSelectedBook] = useState(null);
@@ -88,7 +88,7 @@ const BookPage = () => {
             setNewBook({
                 BookID: '',
                 BookName: '',
-                BookBook: '',
+                BookAuthor: '',
                 BookType: '',
             });
             fetchBooks();
@@ -143,7 +143,7 @@ const BookPage = () => {
                         <tr>
                             <th>Book ID</th>
                             <th>Book Name</th>
-                            <th>Book Book</th>
+                            <th>Book Author</th>
                             <th>Book Type</th>
                             <th>Actions</th>
                         </tr>
@@ -153,7 +153,7 @@ const BookPage = () => {
                             <tr key={book.BookID}>
                                 <td>{book.BookID}</td>
                                 <td>{book.BookName}</td>
-                                <td>{book.BookBook}</td>
+                                <td>{book.BookAuthor}</td>
                                 <td>{book.BookType}</td>
                                 <td>
                                     <button onClick={() => handleDelete(book.BookID)}>Delete</button>
@@ -187,10 +187,10 @@ const BookPage = () => {
                                 />
                                 <input
                                     type="text"
-                                    name="Book Book"
-                                    placeholder="Book Book"
-                                    value={selectedBook.BookBook}
-                                    onChange={(e) => setSelectedBook({ ...selectedBook, BookBook: e.target.value })}
+                                    name="BookAuthor"
+                                    placeholder="Book Author"
+                                    value={selectedBook.BookAuthor}
+                                    onChange={(e) => setSelectedBook({ ...selectedBook, BookAuthor: e.target.value })}
                                 />
                                 <input
                                     type="text"
@@ -226,9 +226,9 @@ const BookPage = () => {
                                 />
                                 <input
                                     type="text"
-                                    name="BookBook"
-                                    placeholder="Book Book"
-                                    value={newBook.BookBook}
+                                    name="BookAuthor"
+                                    placeholder="Book Author"
+                                    value={newBook.BookAuthor}
                                     onChange={handleChange}
                                 />
                                 <input
