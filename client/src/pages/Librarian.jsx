@@ -1,10 +1,50 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
+import { useCookies } from "react-cookie";
 import axios from 'axios';
 import "../styling/Librarian.css";
-import Dashboard from './Dashboard';
 
 const LibrarianPage = () => {
+
+                const navigate = useNavigate();
+                const [cookies, removeCookie] = useCookies([]);
+                useEffect(() => {
+                    const verifyCookie = async () => {
+                      if (!cookies.token) {
+                       navigate("/login");
+                      } else {
+                        try {
+                          const response = await fetch("http://localhost:4000", {
+                            method: "POST",
+                            credentials: "include",
+                          });
+                
+                          if (!response.ok) {
+                            throw new Error("Network response was not ok");
+                          }
+                
+                          const data = await response.json();
+                          const { status, user } = data;
+                
+                          if (!status) {
+                            removeCookie("token");
+                             navigate("/login");
+                          } 
+                        } catch (error) {
+                          console.error("Error fetching data:", error);
+                          removeCookie("token");
+                          navigate("/login");
+                          
+                        }
+                      }
+                    };
+                    verifyCookie();
+                }, [cookies, navigate, removeCookie]);
+
+
+
+
     const [librarians, setLibrarians] = useState([]);
     const [newLibrarian, setNewLibrarian] = useState({
         LibrarianID: '',
@@ -104,7 +144,7 @@ const LibrarianPage = () => {
                             <th>Librarian ID</th>
                             <th>Librarian Name</th>
                             <th>Librarian Email</th>
-                            <th>Telephone number</th>
+                            <th>Librarian Telephone num</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
@@ -155,7 +195,7 @@ const LibrarianPage = () => {
                                 <input
                                     type="text"
                                     name="TelephoneNum"
-                                    placeholder="Librarian Type"
+                                    placeholder="Librarian Telephone Num"
                                     value={selectedLibrarian.TelephoneNum}
                                     onChange={(e) => setSelectedLibrarian({ ...selectedLibrarian, TelephoneNum: e.target.value })}
                                 />
@@ -194,7 +234,7 @@ const LibrarianPage = () => {
                                 <input
                                     type="text"
                                     name="TelephoneNum"
-                                    placeholder="Telephone Number "
+                                    placeholder="Librarian Telephone Num"
                                     value={newLibrarian.TelephoneNum}
                                     onChange={handleChange}
                                 />
@@ -207,7 +247,6 @@ const LibrarianPage = () => {
 
             <Link to="/dashboard"><button className='DashButton'>Back to Dashboard</button></Link>
         </div>
-    );
+    );
 };
-
 export default LibrarianPage;
