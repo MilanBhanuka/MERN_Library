@@ -1,5 +1,5 @@
 const User = require("../Models/UserModel");
-// require("dotenv").config();
+require("dotenv").config();
 const jwt = require("jsonwebtoken");
 
 module.exports.userVerification = (req, res) => {

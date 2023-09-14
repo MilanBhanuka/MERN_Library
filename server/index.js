@@ -10,9 +10,13 @@ const AuthorRoute = require("./Routes/AuthorRoute");
 const StudentRoute = require("./Routes/StudentRoute");
 const LibrarianRoute = require("./Routes/LibrarianRoute");
 const TeacherRoute = require("./Routes/TeacherRoute");
+const { MONGO_URL, PORT } = process.env;
 
+app.use(cors({
+    origin: ['http://localhost:3000'],
+    credentials: true
 
-const PORT=4000
+}));
 
 mongoose
   .connect('mongodb+srv://Eranda:2001@cluster0.qaxcgj2.mongodb.net/?retryWrites=true&w=majority', {
@@ -22,17 +26,11 @@ mongoose
   .then(() => console.log("MongoDB is  connected successfully"))
   .catch((err) => console.error(err));
 
-app.listen(PORT, () => {
+
+app.listen(4000, () => {
   console.log(`Server is listening on port ${PORT}`);
 });
 
-app.use(
-  cors({
-    origin: ["http://localhost:3000"],
-    methods: ["GET", "POST", "PUT", "DELETE"],
-    credentials: true,
-  })
-);
 
 app.use(cookieParser());
 
