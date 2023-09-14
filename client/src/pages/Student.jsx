@@ -3,6 +3,45 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import "../styling/Student.css";
 import Dashboard from './Dashboard';
+import { useNavigate } from "react-router-dom";
+import { useCookies } from "react-cookie";
+
+export default function Student() {
+    const navigate = useNavigate();
+    const [cookies, removeCookie] = useCookies([]);
+    useEffect(() => {
+        const verifyCookie = async () => {
+          if (!cookies.token) {
+           navigate("/login");
+          } else {
+            try {
+              const response = await fetch("http://localhost:4000", {
+                method: "POST",
+                credentials: "include",
+              });
+    
+              if (!response.ok) {
+                throw new Error("Network response was not ok");
+              }
+    
+              const data = await response.json();
+              const { status, user } = data;
+    
+              if (!status) {
+                removeCookie("token");
+                 navigate("/login");
+              } 
+            } catch (error) {
+              console.error("Error fetching data:", error);
+              removeCookie("token");
+              navigate("/login");
+              
+            }
+          }
+        };
+        verifyCookie();
+    }, [cookies, navigate, removeCookie]);
+
 
 const StudentPage = () => {
     const [students, setStudents] = useState([]);
@@ -210,4 +249,4 @@ const StudentPage = () => {
     );
 };
 
-export default StudentPage;
+}
