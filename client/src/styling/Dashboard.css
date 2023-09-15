@@ -1,6 +1,3 @@
-/* Dashboard.css */
-
-/* Style for the logout button */
 .nav-link {
     text-decoration: none;
   }
@@ -22,8 +19,7 @@
     color: #000;
   }
   
-  /* Style for the main dashboard content */
-  .dashboard-container {
+   .dashboard-container {
     font-family: 'Lucida Sans';
 
     padding: 20px;
@@ -42,7 +38,7 @@
     margin-bottom: 30px;
   }
   
-  /* Style for the buttons */
+  
   .btn-block {
     margin-top: 20px;
   }
