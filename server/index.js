@@ -10,7 +10,7 @@ const AuthorRoute = require("./Routes/AuthorRoute");
 const StudentRoute = require("./Routes/StudentRoute");
 const LibrarianRoute = require("./Routes/LibrarianRoute");
 const TeacherRoute = require("./Routes/TeacherRoute");
-const { MONGO_URL, PORT } = process.env;
+const { PORT } = process.env;
 
 app.use(cors({
     origin: ['http://localhost:3000'],
